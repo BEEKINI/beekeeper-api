@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  INSTANCE: 'beekeeper-api.tree'
+  INSTANCE: 'Writerside/beekeeper-api'
   DOCKER_VERSION: '243.22562'
 
 jobs:
