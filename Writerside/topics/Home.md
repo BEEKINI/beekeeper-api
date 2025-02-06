@@ -1,16 +1,11 @@
-# Bienvenue sur la documentation de l'API Beekeeper
+# Welcome to the Beekeeper API documentation
 
-L'API de Beekeeper est une api privée qui permet de
-gérer vos ruches et rushers.
+The Beekeeper API is a private API that allows you to manage your hives and rushers.
 
-## Premiers pas avec l'API Beekeeper
+## Getting started with the Beekeeper API
 
-Pour commencer à utiliser l'API Beekeeper, vous devez
-vous authentifier. Pour cela, vous devez obtenir un token
+To start using the Beekeeper API, you need to authenticate. To do this, you need to obtain a token.
 
-### Authentification
+### Authentication
 
-Pour obtenir un token, vous devez envoyer une requête POST
-à l'endpoint `/auth` avec les paramètres suivants:
-
-
+To obtain a token, you need to send a POST request to the `/auth` endpoint with the following parameters:

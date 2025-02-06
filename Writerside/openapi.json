@@ -14,7 +14,7 @@
   "paths": {
     "/register": {
       "post": {
-        "tags": ["Auth"],
+        "tags": ["auth"],
         "summary": "Register a new user",
         "requestBody": {
           "required": true,
@@ -52,7 +52,7 @@
     },
     "/login": {
       "post": {
-        "tags": ["Auth"],
+        "tags": ["auth"],
         "summary": "Login a user",
         "requestBody": {
           "required": true,
@@ -100,7 +100,7 @@
     },
     "/logout": {
       "post": {
-        "tags": ["Auth"],
+        "tags": ["auth"],
         "summary": "Logout a user",
         "responses": {
           "200": {
@@ -124,7 +124,7 @@
     },
     "/user": {
       "get": {
-        "tags": ["Auth"],
+        "tags": ["auth"],
         "summary": "Get authenticated user",
         "responses": {
           "200": {
