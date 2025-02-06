@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0",
+    "description": "Documentation de l'API pour Writerside"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/v1",
+      "description": "Serveur de production"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["auth"],
+        "summary": "Récupérer la liste des utilisateurs",
+        "responses": {
+          "200": {
+            "description": "Liste des utilisateurs récupérée avec succès",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Jean Dupont"
+          },
+          "email": {
+            "type": "string",
+            "example": "jean.dupont@example.com"
+          }
+        }
+      }
+    }
+  }
+}
