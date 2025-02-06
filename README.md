@@ -36,8 +36,8 @@ To install the project for development, you need to follow these steps:
 2. Copy the `.env.example` file using `cp .env.example .env`
 3. Install the dependencies with `composer install`
 4. Generate the application key with `php artisan key:generate`
-5. Start the project with `sail up -d`
-6. Run the migrations with `sail artisan migrate`
-7. Run the seeders with `sail artisan db:seed`
+5. Start the project with `./vendor/bin/sail up -d`
+6. Run the migrations with `./vendor/bin/sail artisan migrate`
+7. Run the seeders with `./vendor/bin/sail artisan db:seed`
 8. Access the application at `http://localhost:8080`
 9. enjoy the development

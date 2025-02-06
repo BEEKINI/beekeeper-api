@@ -17,5 +17,3 @@ The front-end application is a Angular application that allows you to manage you
 
 For starting to use the Beekeeper API, 
 you need to authenticate yourself. To do this, you need to get a token.
-
-
