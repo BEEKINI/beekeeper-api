@@ -1,16 +1,21 @@
-# Bienvenue sur la documentation de l'API Beekeeper
+# Welcome to Beekeeper API
+[![Build documentation](https://github.com/BEEKINI/beekeeper-api/actions/workflows/build-docs.yml/badge.svg)](https://github.com/BEEKINI/beekeeper-api/actions/workflows/build-docs.yml)
 
-L'API de Beekeeper est une api privée qui permet de
-gérer vos ruches et rushers.
+this Api is a private Backend API that allows you to manage your hives and apiaries.
 
-## Premiers pas avec l'API Beekeeper
+## About Beekeeper API
 
-Pour commencer à utiliser l'API Beekeeper, vous devez
-vous authentifier. Pour cela, vous devez obtenir un token
+This projet is a study project to learn how to create an API with Laravel
+and synchronize it with a front-end application.
 
-### Authentification
+This API is a private Backend API that allows you to manage your hives and apiaries.
 
-Pour obtenir un token, vous devez envoyer une requête POST
-à l'endpoint `/auth` avec les paramètres suivants:
+The front-end application is a Angular application that allows you to manage your hives and apiaries.
+
+
+## Getting started
+
+For starting to use the Beekeeper API, 
+you need to authenticate yourself. To do this, you need to get a token.
 
 

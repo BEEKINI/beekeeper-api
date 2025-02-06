@@ -4,9 +4,8 @@
 
 <instance-profile id="beekeeper-api"
                  name="beekeeper API"
-                 start-page="starter-topic.md">
+                 start-page="Home.md">
 
-    <toc-element topic="starter-topic.md"/>
     <toc-element topic="Home.md"/>
     <toc-element topic="Auth.md"/>
 </instance-profile>

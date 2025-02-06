@@ -2,7 +2,7 @@ name: Build documentation
 
 on:
   push:
-    branches: ["main", "develop", "feat/*"]
+    branches: ["main", "develop", "feat/ini-doc"]
   workflow_dispatch:
 permissions:
   contents: read
