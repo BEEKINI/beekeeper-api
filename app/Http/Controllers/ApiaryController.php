@@ -6,9 +6,12 @@ use App\Models\Apiary;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\ApiaryRequest;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ApiaryController extends Controller
 {
+    use AuthorizesRequests;
+
     public function show(Apiary $apiary): JsonResponse
     {
         return response()->json($apiary);
