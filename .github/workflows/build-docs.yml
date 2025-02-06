@@ -5,8 +5,9 @@ on:
     branches: ["main", "develop", "feat/*"]
   workflow_dispatch:
 permissions:
-  id-token: write
   contents: read
+  id-token: write
+  pages: write
 env:
   INSTANCE: 'Writerside/beekeeper-api'
   DOCKER_VERSION: '243.22562'
