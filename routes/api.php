@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HiveController;
 use App\Http\Controllers\ApiaryController;
 use App\Http\Controllers\ApiAuthController;
 
@@ -13,8 +14,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         return $request->user();
     });
 
-    // for apiaries
     Route::resource('apiaries', ApiaryController::class);
+    Route::resource('hives', HiveController::class);
 
     Route::post('/logout', [ApiAuthController::class, 'logout']);
 });
