@@ -8,4 +8,6 @@
 
     <toc-element topic="Home.md"/>
     <toc-element topic="Auth.md"/>
+    <toc-element topic="Apiaries.md"/>
+    <toc-element topic="Hives.md"/>
 </instance-profile>
