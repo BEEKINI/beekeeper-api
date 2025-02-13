@@ -11,6 +11,14 @@ class HivePolicy
     use HandlesAuthorization;
 
     /**
+     * Determine whether the user can view the hive.
+     */
+    public function view(User $user, Hive $hive): bool
+    {
+        return $user->id === $hive->apiary->user_id;
+    }
+
+    /**
      * Determine whether the user can update the hive.
      */
     public function update(User $user, Hive $hive): bool

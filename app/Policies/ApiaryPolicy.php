@@ -11,6 +11,14 @@ class ApiaryPolicy
     use HandlesAuthorization;
 
     /**
+     * Determine whether the user can view the apiary.
+     */
+    public function view(User $user, Apiary $apiary): bool
+    {
+        return $user->id === $apiary->user_id;
+    }
+
+    /**
      * Determine whether the user can update the apiary.
      */
     public function update(User $user, Apiary $apiary): bool

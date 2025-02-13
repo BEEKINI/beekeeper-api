@@ -14,12 +14,14 @@ class ApiaryController extends Controller
 
     public function show(Apiary $apiary): JsonResponse
     {
+        $this->authorize('view', $apiary);
+
         return response()->json($apiary);
     }
 
     public function index(): JsonResponse
     {
-        return response()->json(Apiary::all());
+        return response()->json(Apiary::all()->flatten());
     }
 
     public function store(ApiaryRequest $request): JsonResponse

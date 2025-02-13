@@ -14,12 +14,14 @@ class HiveController extends Controller
 
     public function show(Hive $hive): JsonResponse
     {
+        $this->authorize('view', $hive);
+
         return response()->json($hive);
     }
 
     public function index(): JsonResponse
     {
-        return response()->json(Hive::all());
+        return response()->json(Hive::all()->flatten());
     }
 
     public function store(HiveRequest $request): JsonResponse
