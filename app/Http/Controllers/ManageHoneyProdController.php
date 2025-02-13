@@ -17,7 +17,7 @@ class ManageHoneyProdController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->json(['honey_productions' => HoneyProd::all()]);
+        return response()->json(['honey_productions' => HoneyProd::all()->flatten()]);
     }
 
     /**

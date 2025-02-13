@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApiAuthController;
+use App\Http\Controllers\ManageHoneyProdController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HiveController;
@@ -18,4 +20,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('hives', HiveController::class);
 
     Route::post('/logout', [ApiAuthController::class, 'logout']);
+
+    Route::controller( ManageHoneyProdController::class)
+        ->prefix('/honey-prod')->group(function () {
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/{id}', 'show');
+            Route::get('/{id}/edit', 'edit');
+        });
 });

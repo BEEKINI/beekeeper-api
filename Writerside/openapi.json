@@ -139,6 +139,159 @@
           }
         }
       }
+    },
+    "/honey-prod": {
+      "get": {
+        "tags": [
+          "honey-prod"
+        ],
+        "summary": "Get all honey productions",
+        "responses": {
+          "200": {
+            "description": "List of honey productions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HoneyProd"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "honey-prod"
+        ],
+        "summary": "Create a new honey production",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HoneyProdRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Honey production created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HoneyProd"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/honey-prod/{id}": {
+      "get": {
+        "tags": [
+          "honey-prod"
+        ],
+        "summary": "Get a specific honey production",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Honey production details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HoneyProd"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "honey-prod"
+        ],
+        "summary": "Update a specific honey production",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HoneyProdRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Honey production updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HoneyProd"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "honey-prod"
+        ],
+        "summary": "Delete a specific honey production",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Honey production deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Honey production deleted"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -213,6 +366,46 @@
                 "type": "string"
               }
             }
+          }
+        }
+      },
+      "HoneyProd": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "value": {
+            "type": "number",
+            "example": 10.5
+          },
+          "apiary_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-01-01T00:00:00Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-01-01T00:00:00Z"
+          }
+        }
+      },
+      "HoneyProdRequest": {
+        "type": "object",
+        "properties": {
+          "apiary_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "value": {
+            "type": "number",
+            "example": 10.5
           }
         }
       }
