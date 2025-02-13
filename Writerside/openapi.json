@@ -141,27 +141,6 @@
       }
     },
     "/honey-prod": {
-      "get": {
-        "tags": [
-          "honey-prod"
-        ],
-        "summary": "Get all honey productions",
-        "responses": {
-          "200": {
-            "description": "List of honey productions",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/HoneyProd"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "honey-prod"
@@ -199,7 +178,7 @@
         "summary": "Get a specific honey production",
         "parameters": [
           {
-            "name": "id",
+            "name": "apiary_id",
             "in": "path",
             "required": true,
             "schema": {

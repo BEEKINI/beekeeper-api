@@ -13,22 +13,6 @@ class ManageHoneyProdController extends Controller
     use AuthorizesRequests;
 
     /**
-     * @return JsonResponse
-     */
-    public function index(): JsonResponse
-    {
-        return response()->json(['honey_productions' => HoneyProd::all()->flatten()]);
-    }
-
-    /**
-     * @return JsonResponse
-     */
-    public function create()
-    {
-        return response()->json(['message' => 'Not implemented']);
-    }
-
-    /**
      * @param HoneyProdRequest $request
      * @return JsonResponse
      */
@@ -40,21 +24,12 @@ class ManageHoneyProdController extends Controller
     }
 
     /**
-     * @param string $id
+     * @param string $apiaryID ID apiary
      * @return JsonResponse
      */
-    public function show(string $id): JsonResponse
+    public function show(string $apiaryID): JsonResponse
     {
-        return response()->json(['honey_production' => HoneyProd::findOrFail($id)]);
-    }
-
-    /**
-     * @param string $id
-     * @return JsonResponse
-     */
-    public function edit(string $id): JsonResponse
-    {
-        return response()->json(['message' => 'Not implemented']);
+        return response()->json(['honey_production' => HoneyProd::where('apiary_id', $apiaryID)->get() ?? []]);
     }
 
     /**
@@ -77,7 +52,6 @@ class ManageHoneyProdController extends Controller
     public function destroy(string $id): JsonResponse
     {
         HoneyProd::destroy($id);
-
-        return response()->json(['message' => 'Honey production deleted']);
+        return response()->json(['message' => 'Value deleted successfully']);
     }
 }

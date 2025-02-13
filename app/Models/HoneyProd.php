@@ -8,18 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class HoneyProd extends Model
 {
+    protected $guarded = [];
+
     public function apiary(): BelongsTo
     {
         return $this->belongsTo(Apiary::class);
-    }
-
-    /**
-     * @param array|string $columns
-     * @return Collection<int|static>
-     */
-    public static function all($columns = ['*']): Collection
-    {
-        return parent::all($columns)->where('user_id', auth()->id());
     }
 
 }
