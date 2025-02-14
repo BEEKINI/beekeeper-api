@@ -669,6 +669,14 @@
                         "type": "string",
                         "example": "-99.6887280"
                     },
+                    "bee_queen_color": {
+                        "type": "string",
+                        "example": "#FF0000"
+                    },
+                    "sensor_id": {
+                        "type": "string",
+                        "example": "123456"
+                    },
                     "apiary_id": {
                         "type": "integer",
                         "example": 1
@@ -700,6 +708,14 @@
                     "longitude": {
                         "type": "string",
                         "example": "-99.6887280"
+                    },
+                    "bee_queen_color": {
+                        "type": "string",
+                        "example": "#FF0000"
+                    },
+                    "sensor_id": {
+                        "type": "string",
+                        "example": "123456"
                     },
                     "apiary_id": {
                         "type": "integer",
