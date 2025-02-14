@@ -39,5 +39,5 @@ To install the project for development, you need to follow these steps:
 5. Start the project with `./vendor/bin/sail up -d`
 6. Run the migrations with `./vendor/bin/sail artisan migrate`
 7. Run the seeders with `./vendor/bin/sail artisan db:seed`
-8. Access the application at `http://localhost:8080`
+8. Access the application at `http://localhost`
 9. enjoy the development
