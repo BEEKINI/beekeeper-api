@@ -30,4 +30,21 @@ class Intervention extends Model
             'date_end' => 'date',
         ];
     }
+
+    /**
+     * Update an intervention
+     *
+     * @param array $attributes
+     * @param array $options
+     * @return bool
+     */
+    public function update(array $attributes = [], array $options = []): bool
+    {
+        if (isset($attributes['is_finished']) && $attributes['is_finished']) {
+            $attributes['closed_at'] = now();
+        } else {
+            $attributes['closed_at'] = null;
+        }
+        return parent::update($attributes, $options);
+    }
 }
