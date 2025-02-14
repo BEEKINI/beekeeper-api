@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\SwarmController;
 use App\Http\Controllers\ApiaryController;
 use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\HiveController;
 use App\Http\Controllers\InterventionController;
 use App\Http\Controllers\ManageHoneyProdController;
+use App\Http\Controllers\SwarmController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -39,4 +39,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::put('/{id}', 'update');
             Route::delete('/{id}', 'destroy');
         });
+
+    Route::controller(SwarmController::class)
+        ->prefix('/swarms')->group(function () {
+            Route::post('/clone/{swarmOriginID}', 'cloneSwarm');
+            Route::get('/{swarm}/ascendant', 'ascendantSwarm');
+        });
+
 });

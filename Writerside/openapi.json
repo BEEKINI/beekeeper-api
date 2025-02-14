@@ -530,6 +530,99 @@
                 }
             }
         },
+        "/swarms/clone/{swarmOriginID}": {
+            "post": {
+                "tags": [
+                    "darwin"
+                ],
+                "summary": "Clone a swarm",
+                "parameters": [
+                    {
+                        "name": "swarmOriginID",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwarmRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Swarm cloned successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Swarm"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Swarm not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/swarms/{swarmID}/ascendant": {
+            "get": {
+                "tags": [
+                    "darwin"
+                ],
+                "summary": "Get the ascendant swarm",
+                "parameters": [
+                    {
+                        "name": "swarmID",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ascendant swarm retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Swarm"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Swarm not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/honey-prod": {
             "post": {
                 "tags": ["honey-prod"],
