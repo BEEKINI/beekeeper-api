@@ -653,6 +653,158 @@
                     }
                 }
             }
+        },
+        "/interventions/all/{apiaryId}": {
+            "get": {
+                "tags": [
+                    "interventions"
+                ],
+                "summary": "List all interventions for a given apiary",
+                "parameters": [
+                    {
+                        "name": "apiaryId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of interventions",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Intervention"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/interventions": {
+            "post": {
+                "tags": [
+                    "interventions"
+                ],
+                "summary": "Create a new intervention",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InterventionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Intervention created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Intervention"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/interventions/{id}": {
+            "get": {
+                "tags": [
+                    "interventions"
+                ],
+                "summary": "Get a specific intervention",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Intervention details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Intervention"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "interventions"
+                ],
+                "summary": "Update a specific intervention",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InterventionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Intervention updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Intervention"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "interventions"
+                ],
+                "summary": "Delete a specific intervention",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Intervention deleted successfully"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -931,6 +1083,77 @@
                     "value": {
                         "type": "number",
                         "example": 10.5
+                    }
+                }
+            },
+            "Intervention": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Intervention Title"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Intervention Description"
+                    },
+                    "apiary_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "is_finished": {
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "closed_at": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-01-01"
+                    },
+                    "date_start": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-01-01"
+                    },
+                    "date_end": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-01-02"
+                    }
+                }
+            },
+            "InterventionRequest": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "example": "Intervention Title"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Intervention Description"
+                    },
+                    "apiary_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "date_start": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-01-01"
+                    },
+                    "date_end": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-01-02"
+                    },
+                    "is_finished": {
+                        "type": "boolean",
+                        "example": false
                     }
                 }
             }
