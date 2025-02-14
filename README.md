@@ -5,7 +5,7 @@
 This projet is a study project to learn how to create an API with Laravel
 and synchronize it with a front-end application.
 
-> For more information, please refer to the [documentation](https://beekini.github.io/beekeeper-api/starter-topic.html).
+> For more information, please refer to the [documentation](https://beekini.github.io/beekeeper-api/).
 
 ## Getting started
 
