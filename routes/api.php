@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SwarmController;
 use App\Http\Controllers\ApiaryController;
 use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\HiveController;
@@ -17,6 +18,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::resource('apiaries', ApiaryController::class);
     Route::resource('hives', HiveController::class);
+    Route::resource('swarms', SwarmController::class);
 
     Route::post('/logout', [ApiAuthController::class, 'logout']);
 
