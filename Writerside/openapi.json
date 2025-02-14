@@ -14,9 +14,7 @@
     "paths": {
         "/register": {
             "post": {
-                "tags": [
-                    "auth"
-                ],
+                "tags": ["auth"],
                 "summary": "Register a new user",
                 "requestBody": {
                     "required": true,
@@ -54,9 +52,7 @@
         },
         "/login": {
             "post": {
-                "tags": [
-                    "auth"
-                ],
+                "tags": ["auth"],
                 "summary": "Login a user",
                 "requestBody": {
                     "required": true,
@@ -104,9 +100,7 @@
         },
         "/logout": {
             "post": {
-                "tags": [
-                    "auth"
-                ],
+                "tags": ["auth"],
                 "summary": "Logout a user",
                 "responses": {
                     "200": {
@@ -130,9 +124,7 @@
         },
         "/user": {
             "get": {
-                "tags": [
-                    "auth"
-                ],
+                "tags": ["auth"],
                 "summary": "Get authenticated user",
                 "responses": {
                     "200": {
@@ -150,9 +142,7 @@
         },
         "/apiaries": {
             "get": {
-                "tags": [
-                    "apiaries"
-                ],
+                "tags": ["apiaries"],
                 "summary": "Get all apiaries",
                 "responses": {
                     "200": {
@@ -171,9 +161,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "apiaries"
-                ],
+                "tags": ["apiaries"],
                 "summary": "Create a new apiary",
                 "requestBody": {
                     "required": true,
@@ -201,9 +189,7 @@
         },
         "/apiaries/{id}": {
             "get": {
-                "tags": [
-                    "apiaries"
-                ],
+                "tags": ["apiaries"],
                 "summary": "Get a specific apiary",
                 "parameters": [
                     {
@@ -229,9 +215,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "apiaries"
-                ],
+                "tags": ["apiaries"],
                 "summary": "Update a specific apiary",
                 "parameters": [
                     {
@@ -267,9 +251,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "apiaries"
-                ],
+                "tags": ["apiaries"],
                 "summary": "Delete a specific apiary",
                 "parameters": [
                     {
@@ -290,9 +272,7 @@
         },
         "/hives": {
             "get": {
-                "tags": [
-                    "hives"
-                ],
+                "tags": ["hives"],
                 "summary": "Get all hives",
                 "responses": {
                     "200": {
@@ -311,9 +291,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "hives"
-                ],
+                "tags": ["hives"],
                 "summary": "Create a new hive",
                 "requestBody": {
                     "required": true,
@@ -341,9 +319,7 @@
         },
         "/hives/{hiveId}": {
             "get": {
-                "tags": [
-                    "hives"
-                ],
+                "tags": ["hives"],
                 "summary": "Get a specific hive",
                 "parameters": [
                     {
@@ -369,9 +345,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "hives"
-                ],
+                "tags": ["hives"],
                 "summary": "Update a specific hive",
                 "parameters": [
                     {
@@ -407,9 +381,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "hives"
-                ],
+                "tags": ["hives"],
                 "summary": "Delete a specific hive",
                 "parameters": [
                     {
@@ -424,6 +396,130 @@
                 "responses": {
                     "204": {
                         "description": "Hive deleted successfully"
+                    }
+                }
+            }
+        },
+        "/honey-prod": {
+            "post": {
+                "tags": ["honey-prod"],
+                "summary": "Create a new honey production",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HoneyProdRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Honey production created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HoneyProd"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/honey-prod/{id}": {
+            "get": {
+                "tags": ["honey-prod"],
+                "summary": "Get a specific honey production",
+                "parameters": [
+                    {
+                        "name": "apiary_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Honey production details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HoneyProd"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["honey-prod"],
+                "summary": "Update a specific honey production",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HoneyProdRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Honey production updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HoneyProd"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["honey-prod"],
+                "summary": "Delete a specific honey production",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Honey production deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Honey production deleted"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -449,67 +545,6 @@
                     "email": {
                         "type": "string",
                         "example": "john.doe@example.com"
-                    }
-                }
-            },
-            "Apiary": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "My Apiary"
-                    },
-                    "latitude": {
-                        "type": "string",
-                        "example": "-46.9457330"
-                    },
-                    "longitude": {
-                        "type": "string",
-                        "example": "-99.6887280"
-                    },
-                    "user_id": {
-                        "type": "integer",
-                        "example": 1
-                    }
-                }
-            },
-            "Hive": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "My Hive"
-                    },
-                    "installation_date": {
-                        "type": "string",
-                        "example": "2021-01-01"
-                    },
-                    "in_use": {
-                        "type": "boolean",
-                        "example": true
-                    },
-                    "latitude": {
-                        "type": "string",
-                        "example": "-46.9457330"
-                    },
-                    "longitude": {
-                        "type": "string",
-                        "example": "-99.6887280"
-                    },
-                    "apiary_id": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "apiary": {
-                        "$ref": "#/components/schemas/Apiary"
                     }
                 }
             },
@@ -551,6 +586,45 @@
                     }
                 }
             },
+            "ValidationError": {
+                "type": "object",
+                "properties": {
+                    "errors": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "Apiary": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "My Apiary"
+                    },
+                    "latitude": {
+                        "type": "string",
+                        "example": "-46.9457330"
+                    },
+                    "longitude": {
+                        "type": "string",
+                        "example": "-99.6887280"
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                }
+            },
             "ApiaryRequest": {
                 "type": "object",
                 "properties": {
@@ -565,6 +639,42 @@
                     "longitude": {
                         "type": "string",
                         "example": "-99.6887280"
+                    }
+                }
+            },
+            "Hive": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "My Hive"
+                    },
+                    "installation_date": {
+                        "type": "string",
+                        "example": "2021-01-01"
+                    },
+                    "in_use": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "latitude": {
+                        "type": "string",
+                        "example": "-46.9457330"
+                    },
+                    "longitude": {
+                        "type": "string",
+                        "example": "-99.6887280"
+                    },
+                    "apiary_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "apiary": {
+                        "$ref": "#/components/schemas/Apiary"
                     }
                 }
             },
@@ -597,17 +707,43 @@
                     }
                 }
             },
-            "ValidationError": {
+            "HoneyProd": {
                 "type": "object",
                 "properties": {
-                    "errors": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "value": {
+                        "type": "number",
+                        "example": 10.5
+                    },
+                    "apiary_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-01-01T00:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-01-01T00:00:00Z"
+                    }
+                }
+            },
+            "HoneyProdRequest": {
+                "type": "object",
+                "properties": {
+                    "apiary_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "value": {
+                        "type": "number",
+                        "example": 10.5
                     }
                 }
             }
