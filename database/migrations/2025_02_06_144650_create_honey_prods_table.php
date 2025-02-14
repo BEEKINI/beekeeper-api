@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('honey_prods', function (Blueprint $table) {
             $table->id();
             $table->float('value');
-            $table->foreignId('apiary_id')->constrained();
+            $table->foreignId('apiary_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

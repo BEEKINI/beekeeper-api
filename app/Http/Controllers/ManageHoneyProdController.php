@@ -29,7 +29,9 @@ class ManageHoneyProdController extends Controller
      */
     public function show(string $apiaryID): JsonResponse
     {
-        return response()->json(['honey_production' => HoneyProd::where('apiary_id', $apiaryID)->get() ?? []]);
+        return response()->json([
+            'honey_production' => HoneyProd::where('apiary_id', $apiaryID)->get() ?? []
+        ]);
     }
 
     /**
