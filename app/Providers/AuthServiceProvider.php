@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Apiary;
+use App\Models\Intervention;
 use App\Policies\ApiaryPolicy;
+use App\Policies\InterventionPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -15,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Apiary::class => ApiaryPolicy::class,
+        Intervention::class => InterventionPolicy::class,
     ];
 
     /**
