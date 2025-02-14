@@ -400,6 +400,136 @@
                 }
             }
         },
+        "/swarms": {
+            "get": {
+                "tags": ["swarms"],
+                "summary": "Get all swarms",
+                "responses": {
+                    "200": {
+                        "description": "List of swarms",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Swarm"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["swarms"],
+                "summary": "Create a new swarm",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwarmRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Swarm created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Swarm"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/swarms/{swarmId}": {
+            "get": {
+                "tags": ["swarms"],
+                "summary": "Get a specific swarm",
+                "parameters": [
+                    {
+                        "name": "swarmId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Swarm details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Swarm"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["swarms"],
+                "summary": "Update a specific swarm",
+                "parameters": [
+                    {
+                        "name": "swarmId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwarmRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Swarm updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Swarm"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["swarms"],
+                "summary": "Delete a specific swarm",
+                "parameters": [
+                    {
+                        "name": "swarmId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Swarm deleted successfully"
+                    }
+                }
+            }
+        },
         "/honey-prod": {
             "post": {
                 "tags": ["honey-prod"],
@@ -718,6 +848,47 @@
                         "example": "123456"
                     },
                     "apiary_id": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                }
+            },
+            "Swarm": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "My Swarm"
+                    },
+                    "is_alive": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "hive_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "hive": {
+                        "$ref": "#/components/schemas/Hive"
+                    }
+                }
+            },
+            "SwarmRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "My Swarm"
+                    },
+                    "is_alive": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "hive_id": {
                         "type": "integer",
                         "example": 1
                     }

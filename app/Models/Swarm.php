@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,5 +22,10 @@ class Swarm extends Model
     public function darwins(): HasMany
     {
         return $this->hasMany(Darwin::class);
+    }
+
+    public static function all($columns = ['*']): Collection
+    {
+        return parent::all($columns)->load('hive.apiary')->where('hive.apiary.user_id', auth()->id());
     }
 }
