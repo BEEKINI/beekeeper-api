@@ -25,6 +25,8 @@ class HiveRequest extends FormRequest
             'in_use' => ['required', 'boolean'],
             'latitude' => ['required', 'numeric'],
             'longitude' => ['required', 'numeric'],
+            'bee_queen_color' => ['nullable', 'string', 'max:255'],
+            'sensor_id' => ['nullable', 'string', 'max:255'],
         ];
     }
 

@@ -24,6 +24,8 @@ class HiveFactory extends Factory
             'in_use' => $this->faker->boolean(),
             'latitude' => $this->faker->latitude(),
             'longitude' => $this->faker->longitude(),
+            'bee_queen_color' => $this->faker->hexColor(),
+            'sensor_id' => $this->faker->uuid(),
         ];
     }
 }
