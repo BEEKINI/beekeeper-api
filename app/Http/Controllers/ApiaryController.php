@@ -16,7 +16,7 @@ class ApiaryController extends Controller
     {
         $this->authorize('view', $apiary);
 
-        return response()->json($apiary);
+        return response()->json($apiary->load('hives'));
     }
 
     public function index(): JsonResponse
