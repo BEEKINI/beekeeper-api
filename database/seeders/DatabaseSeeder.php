@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             SwarmSeeder::class,
             HoneyProdSeeder::class,
             DarwinSeeder::class,
+            NotificationSeeder::class,
         ]);
     }
 }
