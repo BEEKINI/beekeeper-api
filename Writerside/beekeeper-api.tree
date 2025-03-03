@@ -15,4 +15,5 @@
         <toc-element topic="Darwin-Module.md"/>
     </toc-element>
     <toc-element topic="Interventions.md"/>
+    <toc-element topic="Notifications.md"/>
 </instance-profile>
