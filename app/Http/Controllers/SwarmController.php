@@ -16,7 +16,7 @@ class SwarmController extends Controller
     {
         $this->authorize('view', $swarm);
 
-        return response()->json($swarm);
+        return response()->json($swarm->load('states'));
     }
 
     public function index(): JsonResponse
