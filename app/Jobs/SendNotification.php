@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -19,6 +20,11 @@ class SendNotification implements ShouldQueue
 
     public function handle(): void
     {
+        Notification::create([
+            'user_id' => $this->user->id,
+            'message' => $this->message,
+        ]);
+
         Http::post(env('NOTIFICATIONS_URL'), [
             'message' => $this->message,
             'user_id' => $this->user->id,

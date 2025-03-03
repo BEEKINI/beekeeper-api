@@ -24,9 +24,19 @@ class Swarm extends Model
         return $this->hasMany(Darwin::class, 'swarm_id');
     }
 
+    public function states(): HasMany
+    {
+        return $this->hasMany(SwarmState::class);
+    }
+
+    public static function originalAll(): Collection
+    {
+        return parent::all();
+    }
+
     public static function all($columns = ['*']): Collection
     {
-        return parent::all($columns)->load('hive.apiary')->where('hive.apiary.user_id', auth()->id());
+        return parent::all($columns)->load(['hive.apiary', 'states'])->where('hive.apiary.user_id', auth()->id());
     }
 
     /**
