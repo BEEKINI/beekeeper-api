@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Swarm;
-use Illuminate\Http\JsonResponse;
 use App\Http\Requests\SwarmRequest;
-use Symfony\Component\HttpFoundation\Response;
+use App\Models\Swarm;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class SwarmController extends Controller
 {
@@ -48,4 +48,32 @@ class SwarmController extends Controller
 
         return response()->json('', Response::HTTP_NO_CONTENT);
     }
+
+    /**
+     * Clone a swarm
+     *
+     * @param int $swarmOriginID
+     * @param swarmRequest $request
+     * @return JsonResponse
+     */
+    public function cloneSwarm(int $swarmOriginID, SwarmRequest $request): JsonResponse
+    {
+        $swarmOriginID = Swarm::findOrFail($swarmOriginID);
+        $this->authorize('view', $swarmOriginID);
+        $newSwarm = Swarm::cloneSwarm($swarmOriginID, $request->validated());
+        return response()->json($newSwarm, Response::HTTP_CREATED);
+    }
+
+    /**
+     * List of ascending swarms
+     * @param Swarm $swarm
+     * @return JsonResponse
+     */
+    public function ascendantSwarm(Swarm $swarm): JsonResponse
+    {
+        $this->authorize('view', $swarm);
+        $ascendantSwarm = $swarm->ascendantSwarm();
+        return response()->json($ascendantSwarm);
+    }
+
 }
