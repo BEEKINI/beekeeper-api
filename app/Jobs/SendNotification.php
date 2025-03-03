@@ -19,7 +19,7 @@ class SendNotification implements ShouldQueue
 
     public function handle(): void
     {
-        Http::post('https://api.example.com/notifications', [
+        Http::post(env('NOTIFICATIONS_URL'), [
             'message' => $this->message,
             'user_id' => $this->user->id,
         ]);
