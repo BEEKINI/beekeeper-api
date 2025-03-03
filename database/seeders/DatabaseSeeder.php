@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             ApiarySeeder::class,
             HiveSeeder::class,
             SwarmSeeder::class,
+            HoneyProdSeeder::class,
             DarwinSeeder::class,
         ]);
     }
