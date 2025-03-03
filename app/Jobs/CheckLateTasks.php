@@ -19,10 +19,6 @@ class CheckLateTasks implements ShouldQueue
             ->each(function (Intervention $intervention) {
                 $message = "Intervention {$intervention->title} is late";
                 $user = $intervention->apiary->user;
-                Notification::insert([
-                    'user_id' => $user->id,
-                    'message' => $message,
-                ]);
                 SendNotification::dispatch($message, $user);
             });
     }
