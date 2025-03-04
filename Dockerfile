@@ -1,46 +1,38 @@
-FROM php:8.3.11-fpm
+# =======================
+# 1. BUILD STAGE
+# =======================
+FROM php:8.3-cli AS builder
 
-# Update package list and install dependencies
-RUN apt-get update && apt-get install -y \
-    libzip-dev \
-    libpng-dev \
-    postgresql-client \
+WORKDIR /var/www
+
+# Installer les dépendances
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    unzip \
     libpq-dev \
-    nodejs \
-    npm \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    libzip-dev \
+    && docker-php-ext-install pdo_pgsql zip \
+    && apt-get autoremove -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+# Installer Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-ENV COMPOSER_ALLOW_SUPERUSER=1
+# Copier le projet et installer les dépendances
+COPY . .
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist
 
-# Install required packages
-RUN docker-php-ext-install pdo pgsql pdo_pgsql gd bcmath zip \
-    && pecl install redis \
-    && docker-php-ext-enable redis
+# =======================
+# 2. FINAL STAGE
+# =======================
+FROM php:8.3-fpm
 
-WORKDIR /usr/share/nginx/html/
+WORKDIR /var/www
 
-# Copy the codebase
-COPY . ./
+# Copier uniquement le code et les dépendances compilées
+COPY --from=builder /var/www /var/www
 
-# Run composer install for production and give permissions
-RUN sed 's_@php artisan package:discover_/bin/true_;' -i composer.json \
-    && composer install --ignore-platform-req=php --no-dev --optimize-autoloader \
-    && composer clear-cache \
-    && php artisan package:discover --ansi \
-    && chmod -R 775 storage \
-    && chown -R www-data:www-data storage \
-    && mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache
+# Assurer les permissions correctes
+RUN chown -R www-data:www-data /var/www
 
-# Copy entrypoint
-COPY ./Deploy/Script/php-fpm-entrypoint /usr/local/bin/php-entrypoint
-
-# Give permisisons to everything in bin/
-RUN chmod a+x /usr/local/bin/*
-
-ENTRYPOINT ["/usr/local/bin/php-entrypoint"]
-
+# Exposer le port de PHP-FPM
+EXPOSE 9000
 CMD ["php-fpm"]
